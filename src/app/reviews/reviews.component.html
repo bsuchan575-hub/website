@@ -1,0 +1,72 @@
+<div class="reviews-container">
+  <!-- Header Section -->
+  <div class="reviews-header">
+    <h1 class="page-title">Movie Reviews</h1>
+    <p class="page-subtitle">Discover what others are saying about South Indian cinema</p>
+    
+    <!-- Search Bar -->
+    <div class="search-section">
+      <div class="search-box">
+        <input
+          type="text"
+          placeholder="Search reviews by movie, author, or content..."
+          [(ngModel)]="searchTerm"
+          (input)="filterReviews()"
+          class="search-input"
+        />
+        <i class="fas fa-search search-icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews Grid -->
+  <div class="reviews-grid">
+    <div *ngFor="let review of filteredReviews" class="review-card">
+      <!-- Movie Image -->
+      <div class="movie-image">
+        <img [src]="review.movieImage" [alt]="review.movieTitle" />
+      </div>
+
+      <!-- Review Content -->
+      <div class="review-content">
+        <div class="review-header">
+          <h3 class="movie-title">{{ review.movieTitle }}</h3>
+          <div class="rating-stars">
+            <i *ngFor="let star of getStars(review.rating)" class="fas fa-star"></i>
+            <span class="rating-text">{{ review.rating }}/5</span>
+          </div>
+        </div>
+
+        <p class="review-comment">{{ review.comment }}</p>
+
+        <div class="review-meta">
+          <div class="review-author">
+            <i class="fas fa-user"></i>
+            <span>{{ review.author }}</span>
+          </div>
+          <div class="review-date">
+            <i class="fas fa-calendar"></i>
+            <span>{{ review.date }}</span>
+          </div>
+        </div>
+
+        <div class="review-actions">
+          <button class="like-btn" (click)="likeReview(review)">
+            <i class="fas fa-heart"></i>
+            <span>{{ review.likes }}</span>
+          </button>
+          <button class="share-btn">
+            <i class="fas fa-share"></i>
+            Share
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load More -->
+  <div class="load-more-section">
+    <button class="load-more-btn">LOAD MORE REVIEWS</button>
+  </div>
+</div>
+<app-footer></app-footer>

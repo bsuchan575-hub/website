@@ -1,0 +1,47 @@
+<div class="top-rated-container">
+  <!-- Header Section -->
+  <div class="top-rated-header">
+    <h1 class="page-title">Top Rated South Indian Movies</h1>
+    <p class="page-subtitle">Ranked by audience ratings and reviews</p>
+  </div>
+
+  <!-- Movies Grid -->
+  <div class="movies-grid">
+    <div *ngFor="let movie of movies; let i = index" class="movie-card">
+      <!-- Ranking Badge -->
+      <div class="ranking-badge">
+        #{{ i + 1 }}
+      </div>
+
+      <!-- Movie Image -->
+      <div class="movie-image">
+        <img [src]="movie.image" [alt]="movie.title" />
+        <div class="rating-overlay" [style.background-color]="getRatingColor(movie.rating)">
+          {{ movie.rating }}
+        </div>
+      </div>
+
+      <!-- Movie Info -->
+      <div class="movie-info">
+        <h3 class="movie-title">{{ movie.title }}</h3>
+        <div class="movie-meta">
+          <span class="movie-year">{{ movie.year }}</span>
+          <span class="movie-genre">{{ movie.genre }}</span>
+        </div>
+        <p class="movie-director">Director: {{ movie.director }}</p>
+        <p class="movie-description">{{ movie.description }}</p>
+        <div class="movie-stats">
+          <div class="votes">
+            <i class="fas fa-users"></i>
+            <span>{{ movie.votes }} votes</span>
+          </div>
+          <button class="watch-trailer-btn">
+            <i class="fas fa-play"></i>
+            Watch Trailer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

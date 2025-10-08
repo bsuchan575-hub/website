@@ -1,0 +1,210 @@
+<div class="login-container">
+  <div class="login-card">
+    <!-- Left Section - Graphics -->
+    <div class="login-graphics">
+      <div class="graphic-content">
+        <div class="logo-section">
+          <h1>MovieVerse</h1>
+          <p>Your Cinematic Universe</p>
+        </div>
+        
+        <div class="features-list">
+          <div class="feature-item">
+            <i class="fas fa-star"></i>
+            <span>Rate &amp; Review Movies</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-users"></i>
+            <span>Join Movie Community</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-bell"></i>
+            <span>Get Personalized Alerts</span>
+          </div>
+        </div>
+
+        <div class="floating-elements">
+          <div class="floating-element element-1">🎬</div>
+          <div class="floating-element element-2">🌟</div>
+          <div class="floating-element element-3">🎭</div>
+          <div class="floating-element element-4">📽️</div>
+          <div class="floating-element element-5">🍿</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section - Login Form -->
+    <div class="login-form-section">
+      <div class="form-container">
+        <!-- Success Message -->
+        <div *ngIf="showSuccess" class="success-message">
+          <i class="fas fa-check-circle"></i>
+          <span *ngIf="currentProvider === 'email'">Welcome back! Redirecting to MovieVerse...</span>
+          <span *ngIf="currentProvider === 'google'">Google login successful! Redirecting to MovieVerse...</span>
+          <span *ngIf="currentProvider === 'facebook'">Facebook login successful! Redirecting to MovieVerse...</span>
+        </div>
+
+        <div class="form-header">
+          <h2>Welcome Back!</h2>
+          <p>Sign in to your MovieVerse account</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <div class="input-group">
+              <i class="fas fa-envelope input-icon"></i>
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                placeholder="Enter your email"
+                [class.error]="email?.invalid && email?.touched"
+              />
+            </div>
+            <div *ngIf="email?.invalid && email?.touched" class="error-message">
+              <span *ngIf="email?.errors?.['required']">Email is required</span>
+              <span *ngIf="email?.errors?.['email']">Please enter a valid email</span>
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group">
+            <div class="label-row">
+              <label for="password">Password</label>
+              <a href="#" class="forgot-password" (click)="onForgotPassword()">Forgot password?</a>
+            </div>
+            <div class="input-group">
+              <i class="fas fa-lock input-icon"></i>
+              <input
+                type="password"
+                id="password"
+                formControlName="password"
+                placeholder="Enter your password"
+                [class.error]="password?.invalid && password?.touched"
+              />
+            </div>
+            <div *ngIf="password?.invalid && password?.touched" class="error-message">
+              <span *ngIf="password?.errors?.['required']">Password is required</span>
+              <span *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters</span>
+            </div>
+          </div>
+
+          <!-- Remember Me -->
+          <div class="form-options">
+            <label class="checkbox-label">
+              <input type="checkbox" formControlName="rememberMe" />
+              <span class="checkmark"></span>
+              Remember me for 30 days
+            </label>
+          </div>
+
+          <!-- Error Message -->
+          <div *ngIf="loginError" class="login-error">
+            <i class="fas fa-exclamation-triangle"></i>
+            {{ loginError }}
+          </div>
+
+          <!-- Login Button -->
+          <button type="submit" class="login-btn" [disabled]="isLoading">
+            <span *ngIf="!isLoading">
+              <i class="fas fa-sign-in-alt"></i>
+              Sign In
+            </span>
+            <div *ngIf="isLoading && currentProvider === 'email'" class="loading-spinner"></div>
+          </button>
+
+          <!-- Demo Credentials -->
+          <div class="demo-section">
+            <p class="demo-text">Demo Credentials:</p>
+            <button type="button" class="demo-btn" (click)="fillDemoCredentials()">
+              <i class="fas fa-magic"></i>
+              Fill Demo Credentials
+            </button>
+          </div>
+        </form>
+
+        <!-- Divider -->
+        <div class="divider">
+          <span>Or continue with</span>
+        </div>
+
+        <!-- Social Login -->
+        <div class="social-login">
+          <button class="social-btn google-btn" (click)="onGoogleLogin()" [disabled]="isLoading || showOAuthPopup">
+            <i class="fab fa-google"></i>
+            Google
+          </button>
+          <button class="social-btn facebook-btn" (click)="onFacebookLogin()" [disabled]="isLoading || showOAuthPopup">
+            <i class="fab fa-facebook-f"></i>
+            Facebook
+          </button>
+        </div>
+
+        <!-- Sign Up Link -->
+        <div class="signup-section">
+          <p>Don't have an account? 
+            <a href="#" class="signup-link" (click)="onSignup()">Create account</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OAuth Popup -->
+  <div *ngIf="showOAuthPopup" class="oauth-popup-overlay">
+    <div class="oauth-popup">
+      <div class="oauth-header">
+        <img [src]="oauthProvider === 'google' ? 'https://developers.google.com/identity/images/g-logo.png' : 'https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg'" 
+             [alt]="oauthProvider" class="provider-logo">
+        <h3>Sign in with {{oauthProvider === 'google' ? 'Google' : 'Facebook'}}</h3>
+        <button class="close-btn" (click)="closeOAuthPopup()">×</button>
+      </div>
+      
+      <div class="oauth-content">
+        <div class="oauth-loading">
+          <div class="oauth-spinner"></div>
+          <p *ngIf="oauthStep === 1">Connecting to {{oauthProvider === 'google' ? 'Google' : 'Facebook'}}...</p>
+          <p *ngIf="oauthStep === 2">Authenticating your account...</p>
+          <p *ngIf="oauthStep === 3">Redirecting to MovieVerse...</p>
+          <p class="oauth-subtext">You'll be redirected to {{oauthProvider === 'google' ? 'Google' : 'Facebook'}} to sign in securely</p>
+        </div>
+        
+        <div class="oauth-browser">
+          <div class="browser-bar">
+            <div class="browser-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="browser-url">
+              <span *ngIf="oauthStep === 1">connecting...</span>
+              <span *ngIf="oauthStep === 2">{{oauthProvider}}.com/authenticate</span>
+              <span *ngIf="oauthStep === 3">movieverse.com/callback</span>
+            </div>
+          </div>
+          <div class="browser-content">
+            <div *ngIf="oauthStep === 1" class="browser-step">
+              <p>Establishing secure connection...</p>
+            </div>
+            <div *ngIf="oauthStep === 2" class="browser-step">
+              <p>Please wait while we verify your identity...</p>
+            </div>
+            <div *ngIf="oauthStep === 3" class="browser-step">
+              <p>Returning to MovieVerse...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div *ngIf="isLoading && !showOAuthPopup" class="loading-overlay">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p *ngIf="currentProvider === 'email'">Signing you in...</p>
+    </div>
+  </div>
+</div>

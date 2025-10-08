@@ -1,0 +1,18 @@
+<div class="slideshow-container">
+  <div *ngFor="let movie of movies; let i = index" class="slide" [class.active]="i === currentIndex">
+    <img [src]="movie.image" alt="{{ movie.title }}" class="slide-image" />
+    <div class="overlay-content">
+      <h2 class="movie-title">{{ movie.title }}</h2>
+      <p class="movie-description">{{ movie.description }}</p>
+      <div class="rating">
+        <i *ngFor="let star of [1,2,3,4,5]" class="fa"
+           [ngClass]="{'fa-star': star <= movie.rating, 'fa-star-o': star > movie.rating}"></i>
+        <span>{{ movie.rating }}</span>
+      </div>
+      <button class="review-btn" (click)="goToReviewPage(movie.title)">Review Movie</button>
+    </div>
+  </div>
+
+  <button class="prev-btn" (click)="prevSlide()">&#10094;</button>
+  <button class="next-btn" (click)="nextSlide()">&#10095;</button>
+</div>

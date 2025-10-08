@@ -1,0 +1,55 @@
+<div class="review-container" *ngIf="movie">
+  <!-- Back to Home Button -->
+  <div class="back-nav">
+    <a routerLink="/" class="back-button">
+      ← Back to Home
+    </a>
+  </div>
+
+  <!-- Rest of your review content remains the same -->
+  <div class="movie-info">
+    <img [src]="movie.image" [alt]="movie.title" class="movie-poster" />
+    <div class="movie-details">
+      <h2>{{ movie.title }}</h2>
+      <p class="movie-meta" *ngIf="movie.year || movie.genre || movie.director">
+        <span *ngIf="movie.year">{{ movie.year }}</span>
+        <span *ngIf="movie.genre"> • {{ movie.genre }}</span>
+        <span *ngIf="movie.director"> • Directed by {{ movie.director }}</span>
+      </p>
+      <p class="movie-description">{{ movie.description }}</p>
+    </div>
+  </div>
+
+  <!-- Rating and comment sections remain the same -->
+  <div class="rating-section">
+    <label>Rate this movie:</label>
+    <div class="stars">
+      <span 
+        *ngFor="let star of stars" 
+        class="star"
+        [class.filled]="star <= rating"
+        [class.hover]="star <= hoverRating && hoverRating > 0"
+        (click)="setRating(star)"
+        (mouseenter)="setHoverRating(star)"
+        (mouseleave)="clearHoverRating()">
+        ★
+      </span>
+    </div>
+    <div class="rating-text" *ngIf="rating > 0">
+      You rated: {{ rating }} star{{ rating > 1 ? 's' : '' }}
+    </div>
+  </div>
+
+  <div class="comment-section">
+    <label>Your Review (optional):</label>
+    <textarea 
+      [(ngModel)]="comment" 
+      placeholder="Share your thoughts about the movie... What did you like? What could be better?"
+      rows="5">
+    </textarea>
+  </div>
+
+  <button (click)="submitReview()" class="submit-btn">
+    Submit Review
+  </button>
+</div>

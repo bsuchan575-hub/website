@@ -1,0 +1,113 @@
+/* Base Header Styling */
+.header {
+  width: 100%;
+  background-color: #111827; /* dark gray (like IMDb dark mode) */
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Layout */
+.header-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #facc15; /* yellow-400 */
+  letter-spacing: 2px;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  gap: 32px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #facc15;
+  transform: translateY(-2px);
+}
+
+/* Search Box */
+.search-box {
+  position: relative;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .search-box {
+    display: block;
+  }
+}
+
+.search-input {
+  background-color: #1f2937; /* gray-800 */
+  color: white;
+  font-size: 14px;
+  border-radius: 9999px;
+  padding: 8px 16px 8px 36px;
+  outline: none;
+  border: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 2px #facc15;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 8px;
+  color: #9ca3af;
+}
+
+/* Login Button */
+.login-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #facc15;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #fde047;
+  transform: scale(1.05);
+}
+
+/* Right Section */
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

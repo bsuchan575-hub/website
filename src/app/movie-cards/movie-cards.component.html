@@ -1,0 +1,22 @@
+<div class="movie-cards-container">
+  <h1 class="page-title">Top South Indian Movies</h1>
+  <p class="page-subtitle">Click on any movie to rate and review it</p>
+  
+  <div class="movies-grid">
+    <div *ngFor="let movie of movies" class="movie-page" (click)="navigateToReview(movie)">
+      <div class="card-image">
+        <img [src]="movie.image" [alt]="movie.title" />
+        <div class="card-overlay">
+          <button class="review-btn">Rate & Review</button>
+        </div>
+      </div>
+      
+      <div class="card-content">
+        <h3 class="movie-title">{{ movie.title }}</h3>
+        <p class="movie-year">{{ movie.year }} • {{ movie.genre }}</p>
+        <p class="movie-director">Director: {{ movie.director }}</p>
+        <p class="movie-description">{{ movie.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

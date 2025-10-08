@@ -1,0 +1,191 @@
+.review-container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #111;
+  color: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+.back-nav {
+  margin-bottom: 20px;
+}
+
+.back-button {
+  color: #facc15;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 16px;
+  border: 1px solid #facc15;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.back-button:hover {
+  background: #facc15;
+  color: #000;
+}
+
+.movie-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #333;
+}
+
+.movie-poster {
+  width: 180px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255,255,0,0.3);
+}
+
+.movie-details {
+  flex: 1;
+}
+
+.movie-details h2 {
+  color: #facc15;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.movie-meta {
+  color: #ccc;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.movie-description {
+  color: #aaa;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.rating-section {
+  text-align: center;
+  margin: 30px 0;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+
+.rating-section label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.star {
+  font-size: 40px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.star.filled {
+  color: #facc15;
+  text-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+}
+
+.star.hover {
+  color: #fde047;
+  transform: scale(1.1);
+}
+
+.rating-text {
+  margin-top: 10px;
+  color: #facc15;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.comment-section {
+  margin: 30px 0;
+}
+
+.comment-section label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid #333;
+  padding: 15px;
+  font-size: 16px;
+  outline: none;
+  resize: vertical;
+  background-color: #222;
+  color: white;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+textarea:focus {
+  border-color: #facc15;
+}
+
+.submit-btn {
+  display: block;
+  margin: 30px auto 0;
+  background-color: #facc15;
+  color: black;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  min-width: 200px;
+}
+
+.submit-btn:hover {
+  background-color: #fde047;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .review-container {
+    margin: 10px;
+    padding: 20px;
+  }
+  
+  .movie-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .movie-poster {
+    width: 150px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  
+  .stars {
+    gap: 5px;
+  }
+  
+  .star {
+    font-size: 35px;
+  }
+}

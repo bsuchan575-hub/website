@@ -1,0 +1,43 @@
+<div class="celebrities-container">
+  <!-- Header Section -->
+  <div class="celebrities-header">
+    <h1 class="page-title">Most popular celebrities</h1>
+    <div class="header-tabs">
+      <span class="tab-label">TOP RISING</span>
+      <span class="tab-label">BY RANKING</span>
+    </div>
+  </div>
+
+  <!-- Celebrities Grid -->
+  <div class="celebrities-grid">
+    <div *ngFor="let celebrity of celebrities" class="celebrity-row">
+      <!-- Ranking Number -->
+      <div class="ranking-number" [style.background-color]="getRankingColor(celebrity.ranking)">
+        {{ celebrity.ranking }}
+      </div>
+
+      <!-- Votes Count -->
+      <div class="votes-count">
+        {{ celebrity.votes }}
+      </div>
+
+      <!-- Celebrity Info -->
+      <div class="celebrity-main-info">
+        <h3 class="celebrity-name">{{ celebrity.name }}</h3>
+        <p class="celebrity-profession">{{ celebrity.profession }}</p>
+        
+        <!-- Industry Badge -->
+        <span class="industry-badge" [style.background-color]="getIndustryColor(celebrity.industry)">
+          {{ celebrity.industry }}
+        </span>
+      </div>
+
+      <!-- Popular Movies -->
+      <div class="popular-movies-row">
+        <span *ngFor="let movie of celebrity.popularMovies" class="movie-tag">
+          {{ movie }}
+        </span>
+      </div>
+    </div>
+  </div>
+<app-footer></app-footer>

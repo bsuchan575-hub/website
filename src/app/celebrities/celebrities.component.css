@@ -1,0 +1,289 @@
+.celebrities-container {
+  width: 100%;
+  margin: 0;
+  padding: 40px 20px;
+  background-color: #000000;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.celebrities-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px 0;
+  border-bottom: 2px solid #333333;
+}
+
+.page-title {
+  color: #facc15;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(250, 204, 21, 0.3);
+}
+
+.header-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.tab-label {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+/* Celebrities Grid */
+.celebrities-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Celebrity Row */
+.celebrity-row {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 25px 30px;
+  border-radius: 8px;
+  border: 1px solid #333333;
+  transition: all 0.3s ease;
+  min-height: 90px;
+}
+
+.celebrity-row:hover {
+  border-color: #facc15;
+  box-shadow: 0 4px 20px rgba(250, 204, 21, 0.2);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%);
+}
+
+/* Ranking Number */
+.ranking-number {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #000000;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 2px solid #ffffff;
+}
+
+/* Votes Count */
+.votes-count {
+  color: #facc15;
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-width: 90px;
+  flex-shrink: 0;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Celebrity Main Info */
+.celebrity-main-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.celebrity-name {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+.celebrity-profession {
+  color: #cccccc;
+  font-size: 0.95rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+/* Industry Badge */
+.industry-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  align-self: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Popular Movies Row */
+.popular-movies-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  min-width: 250px;
+  justify-content: flex-end;
+}
+
+.movie-tag {
+  background: rgba(250, 204, 21, 0.15);
+  color: #facc15;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.movie-tag:hover {
+  background: rgba(250, 204, 21, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Load More Button */
+.load-more-section {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.load-more-btn {
+  background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+  color: #000000;
+  border: none;
+  padding: 18px 50px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+}
+
+.load-more-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(250, 204, 21, 0.5);
+  letter-spacing: 3px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .celebrities-grid {
+    padding: 15px;
+  }
+  
+  .celebrity-row {
+    gap: 20px;
+    padding: 20px 25px;
+  }
+  
+  .ranking-number {
+    width: 55px;
+    height: 55px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .celebrities-container {
+    padding: 30px 15px;
+  }
+
+  .page-title {
+    font-size: 2.2rem;
+  }
+
+  .header-tabs {
+    gap: 20px;
+  }
+
+  .tab-label {
+    font-size: 1rem;
+  }
+
+  .celebrity-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .celebrity-main-info {
+    align-items: center;
+  }
+
+  .industry-badge {
+    align-self: center;
+  }
+
+  .popular-movies-row {
+    justify-content: center;
+    min-width: auto;
+    width: 100%;
+  }
+
+  .votes-count {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+
+  .header-tabs {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .celebrities-grid {
+    padding: 10px;
+  }
+
+  .celebrity-name {
+    font-size: 1.3rem;
+  }
+
+  .movie-tag {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
+  .ranking-number {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .load-more-btn {
+    padding: 15px 40px;
+    font-size: 1rem;
+  }
+}
